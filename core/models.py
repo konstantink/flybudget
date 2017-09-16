@@ -27,6 +27,21 @@ class TimestampModel(models.Model):
         self.deleted_at = datetime.utcnow()
 
 
+class Card(TimestampModel):
+
+    owner = models.OneToOneField(User, related_name='card')
+    number = models.CharField(_(u'Card number'), max_length=16)
+    expiration_date = models.DateField(_('Expiration date'))
+    wallet = models.ForeignKey('Wallet', related_name='cards')
+
+
+class Wallet(TimestampModel):
+
+    owner = models.OneToOneField(User)
+    # cards = models.ManyToManyField(Card)
+    cash = models.IntegerField(_('Cash'))
+
+
 class Category(TimestampModel):
 
     uuid = models.UUIDField(unique=True, default=uuid.uuid4())
