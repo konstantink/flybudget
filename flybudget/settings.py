@@ -25,7 +25,9 @@ SECRET_KEY = '5l1kzm2da!td+=9v%k+9qvev)4&(!z0d$f&pj-w^p7=92a8l6t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+SITE_ID = 1
 
 
 # Application definition
@@ -37,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'webpack_loader',
 
     'rest_framework',
 
@@ -58,7 +63,7 @@ ROOT_URLCONF = 'flybudget.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['frontend'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,3 +145,31 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'frontend/static'),
+    os.path.join(BASE_DIR, 'web/assets')
+]
+
+
+# Rest framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASS': (
+        'rest_framework.permissions.IsAuthenticated'
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    )
+}
+
+
+# Webpack settings
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'js/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'web/webpack-stats.json'),
+    }
+}

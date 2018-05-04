@@ -1,0 +1,220 @@
+body, html {
+    font-family: Dosis, Streetvertising, sans-serif;
+    height: 100%;
+}
+
+button, input {
+    overflow: visible;
+    outline: none;
+    border: none;
+}
+
+a {
+    color: #333333;
+    font-weight: 600;
+}
+
+a:hover {
+    color: #1b9eb3;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/*input[type=password] {*/
+    /*font-family: sans-serif;*/
+/*}*/
+
+.txt1 {
+    font-family: Dosis, Streetvertising, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666666;
+}
+
+.txt2 {
+    font-family: Dosis, Streetvertising, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 700;
+    text-shadow: 1px 1px #666666;
+    color: #333333;
+}
+
+/** Form inputs */
+.auth-form-wrapper {
+    /*align-items: center;*/
+    background: #f2f2f2;
+    display: flex;
+    display: -webkit-flex;
+    min-height: 100vh;
+    /*justify-content: center;*/
+    width: 100%;
+}
+
+.auth-form {
+    background: #fff;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    margin: auto;
+    padding: 77px 55px 33px 55px;
+    width: 390px;
+}
+
+.auth-form-title {
+    display: block;
+    font-family: Dosis, Streetvertising;
+    font-size: 38px;
+    text-align: center;
+}
+
+.p-b-26 {
+    padding-bottom: 26px;
+}
+
+.p-b-48 {
+    padding-bottom: 48px;
+}
+
+.p-t-115 {
+    padding-top: 115px;
+}
+
+.input-wrapper {
+    /* border-bottom: 2px solid #adadad; */
+    border: 1px solid #447bdb;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    margin-bottom: 25px;
+    position: relative;
+}
+.input {
+    background: transparent;
+    border: none;
+    display: block;
+    font-family: Dosis, Streetvertising;
+    font-size: 18px;
+    height: 54px;
+    padding: 4px 16px 0 16px;
+    width: 100%;
+}
+
+.input-focus {
+    display: block;
+    height: 100%;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+/* .input-focus::before {
+    bottom: -2px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+    width: 0;
+
+    background: #6a7dfe;
+    background: -webkit-linear-gradient(right, #447bdb, #57daef);
+    background: -o-linear-gradient(left, #21d4fd, #b721ff);
+    background: -moz-linear-gradient(left, #21d4fd, #b721ff);
+    background: linear-gradient(left, #21d4fd, #b721ff);
+} */
+
+.input-focus::after {
+    background: transparent;
+    color: #999999;
+    content: attr(data-placeholder);
+    display: block;
+    font-size: 18px;
+    left: 0;
+    padding-left: 17px;
+    position: absolute;
+    top: 13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.has-val.input + .input-focus::after,
+.input:focus + .input-focus::after {
+    font-size: 9pt;
+    letter-spacing: 0.05em;
+    top: 0px;
+}
+
+.has-val.input + .input-focus::before,
+.input:focus + .input-focus::before {
+    width: 100%;
+}
+
+/** Button */
+
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 13px;
+}
+
+.btn-wrapper {
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.login-bgbtn {
+    position: absolute;
+    z-index: -1;
+    width: 300%;
+    height: 100%;
+    background: #a64bf4;
+    /*background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);*/
+    background: -webkit-linear-gradient(right, #447bdb, #57daef, #447bdb, #57daef);
+    background: -o-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -moz-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    top: 0;
+    left: -100%;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.login-btn {
+    align-items: center;
+    background: transparent;
+    color: #fff;
+    display: flex;
+    font-family: Dosis, Streetvertising;
+    font-size: 15px;
+    height: 50px;
+    justify-content: center;
+    padding: 0 20px;
+    text-transform: uppercase;
+    width: 100%;
+}

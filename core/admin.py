@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-import models
+import core.models as models
 
 # Register your models here.
 

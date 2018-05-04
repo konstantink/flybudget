@@ -1,1 +1,8 @@
+# PyCharm folder
 .idea/
+
+*.pyc
+
+# JS folders
+node_modules/
+
