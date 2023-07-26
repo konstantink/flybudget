@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from django.utils.text import ugettext_lazy as _
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -173,3 +175,16 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'web/webpack-stats.json'),
     }
 }
+
+
+# Core application settings
+
+FINANCIAL_PLAN_DEFAULT_SUPER_CATEGORIES = (
+    (_(u'Main expenses'), 50),
+    (_(u'Less required expenses'), 30),
+    (_(u'Savings'), 20)
+)
+
+
+if DEBUG:
+    from flybudget.settings_local import *

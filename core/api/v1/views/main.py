@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import json
+import pandas as pd
 
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
@@ -13,6 +14,8 @@ from rest_framework.views import APIView
 
 import core.models as cm
 import core.serializers as cs
+
+from core.utils import cache_it
 
 # Create your views here.
 
@@ -34,9 +37,11 @@ class EntryView(View):
 
 class ExpensesView(APIView):
 
+    @cache_it('expenses')
     def get(self, request, format=None):
         entries = cm.Entry.objects.order_by('-date').all()[:100]
         data = cs.EntrySerializer(entries, many=True).data
+        df = pd.DataFrame(data)
         return Response(data=data)
 
 

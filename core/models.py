@@ -46,6 +46,11 @@ class Category(TimestampModel):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4())
     name = models.CharField(_(u'Category name'), max_length=64)
     user = models.ManyToManyField(User, related_name='categories')
+    superset = models.BooleanField(_('Global category'), default=False)
+    super_category = models.ForeignKey('self', null=True, blank=True, limit_choices_to={'superset': True, 'user': user},
+                                       related_name='subcategories')
+    # NOTE: Probably another relation is required to unite SuperCategory and user FinancialPlan
+    fin_plan = models.ForeignKey('FinancialPlan', related_name='supersets')
     # is_public = models.BooleanField(_('Is public'), default=False)
 
     objects = ActiveManager()
@@ -109,6 +114,18 @@ class Entry(TimestampModel):
 
     def __repr__(self):
         return u'<Entry: user={} item={} category={}>'.format(self.user.username, self.item.name, self.category.name)
+
+
+class FinancialPlan(TimestampModel):
+
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4())
+    user = models.OneToOneField(User, related_name='plan')
+
+    class Meta:
+        verbose_name_plural = _(u'FinancialPlans')
+
+    def __repr__(self):
+        return u'<FinancialPlan: user={}>'.format(self.user.username)
 
 
 class Wallet(TimestampModel):

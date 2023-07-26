@@ -1,5 +1,6 @@
 Django>=1.9
 psycopg2
+django-redis
 djangorestframework==3.6.3
 djangorestframework-simplejwt==3.2.1
 xlrd>=0.9.0
